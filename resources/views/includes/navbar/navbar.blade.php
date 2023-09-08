@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg">
     <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <a class="navbar-brand d-flex align-items-center" href="{{route('homepage')}}">
             <img src="images/logo.png" class="navbar-brand-image img-fluid" alt="Tiya Golf Club">
             <span class="navbar-brand-text">
                 Tiya
@@ -42,25 +42,29 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
 
                     <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                        <li><a class="dropdown-item" href="event-listing.html">Event Listing</a></li>
+                        <li><a class="dropdown-item" href="{{route('listpage')}}">Event Listing</a></li>
 
-                        <li><a class="dropdown-item" href="event-detail.html">Event Detail</a></li>
+                        <li><a class="dropdown-item" href="{{route('detailspage')}}">Event Detail</a></li>
                     </ul>
                 </li>
-                <li>
-                     <!-- Authentication Links -->
+
+                   <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+
+                    <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                           <!-- Authentication Links -->
                      @guest
                      <li class="nav-item">
-                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                         <a class="dropdown-item" href="{{ route('login') }}">{{ __('Login') }}</a>
                      </li>
                      @if (Route::has('register'))
                          <li class="nav-item">
-                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                             <a class="dropdown-item" href="{{ route('register') }}">{{ __('Register') }}</a>
                          </li>
                      @endif
                  @else
                      <li class="nav-item dropdown">
-                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                         <a id="navbarDropdown" class="dropdown-item dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                              {{ Auth::user()->name }}
                          </a>
 
@@ -77,7 +81,9 @@
                          </div>
                      </li>
                  @endguest
+                    </ul>
                 </li>
+
             </ul>
 
             <div class="d-none d-lg-block ms-lg-3">
